@@ -16,10 +16,10 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Site Title"
+title                    : "KamranMK"
 title_separator          : "-"
-name                     : "Your Name"
-description              : "An amazing website."
+name                     : "Kamran Mammadzada"
+description              : "Me and Data Science."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -106,10 +106,10 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Kamran Mammadzada"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
+  bio              : "I am a data science enthusiast with the desire to make things better."
+  location         : "Brussels, Belgium"
   email            :
   links:
     - label: "Email"
@@ -126,10 +126,13 @@ author:
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
+      url: "https://github.com/kamranmk"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
+    - label: "Linkedin"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/"
 
 # Site Footer
 footer:
@@ -293,3 +296,11 @@ defaults:
       comments: # true
       share: true
       related: true
+  
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
