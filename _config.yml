@@ -107,8 +107,8 @@ analytics:
 # Site Author
 author:
   name             : "Kamran Mammadzada"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am a data science enthusiast with the desire to make things better."
+  avatar           : "/images/biopic-km.jpg" #path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "I am a data science enthusiast with the passion for knowledge."
   location         : "Brussels, Belgium"
   email            :
   links:
