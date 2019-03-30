@@ -4,7 +4,9 @@ permalink: /data-science-learning/
 title: "Data Science Learning"
 author_profile: true
 header:
-    image: "/images/ds_learning.jpg"
+    overlay_image: "/images/ds_learning.jpg"
+    overlay_filter: 0.5
+    caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 ---
 
 {% include group-by-array category=site.posts field="tags" %}

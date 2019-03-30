@@ -1,6 +1,7 @@
 ---
-title: "About"
+title: "About me"
 permalink: /about/
+classes: wide
 header:
     image: "/images/universe.jpg"
 ---

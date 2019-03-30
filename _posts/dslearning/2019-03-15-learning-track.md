@@ -7,6 +7,7 @@ author_profile: true
 excerpt: "Detailed timeline of various courses and reference material I have gone through in my data science learning journey."
 toc: True
 toc_label: "Contents"
+toc_sticky: true
 ---
 
 This post contains online & university courses, as well as various content, reference materials, subjects which I have covered throughout my data science journey for the past 2 years both studying my Master's Degree. I have provided links and references where possible but some courses I took from the university don't have an online reference, thus I have summarized my learning from them briefly.
