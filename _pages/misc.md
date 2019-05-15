@@ -1,18 +1,18 @@
 ---
-layout: category
-permalink: /data-science-learning/
-title: "Data Science Learning"
-excerpt: "Share and learn together"
+layout: archive
+permalink: /misc/
+title: "Miscellaneous"
+excerpt: "Tips, tricks, quick fixes"
 author_profile: true
 header:
-    overlay_image: "/images/ds_learning.jpg"
+    overlay_image: "/images/miscellaneous.jpg"
     overlay_filter: 0.5
     caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 ---
 
 {% include group-by-array category=site.posts field="tags" %}
 
-{% for post in site.categories.data-science-learning %}
+{% for post in site.categories.misc %}
   {% include archive-single.html %}
 {% endfor %}
 

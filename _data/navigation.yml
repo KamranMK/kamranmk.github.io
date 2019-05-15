@@ -6,5 +6,7 @@ main:
     url: /data-science-learning/
   - title: "Projects"
     url: /projects/
+  - title: "Misc"
+    url: /misc/
   # - title: "Sitemap"
   #   url: /sitemap/
