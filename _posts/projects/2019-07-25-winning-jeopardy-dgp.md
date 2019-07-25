@@ -1,12 +1,14 @@
 ---
 title: "Winning Jeopardy"
-date: 2019-05-15
+date: 2019-07-25
 tags: [data analysis, dataquest, guided project, jeopardy]
 category: [projects]
-author_profile: true
-classes: wide
-excerpt: "Finding patterns in jeopardy questions"
+excerpt: "A guided project to find patterns in jeopardy questions."
 comments: True
+author_profile: True
+toc: True
+toc_label: "Contents"
+toc_sticky: true
 ---
 
 Jeopardy is a popular TV show in the US where participants answer questions to win money. It's been running for a few decades, and is a major force in popular culture. 
@@ -841,3 +843,5 @@ The above table is a very nice summary of the probability of each category ocurr
 ## Summary
 
 Here, we have explored the wonderful world of jeopardy and tried to find interesting information that could give us an edge in better preparing for the game and ultimately win in it.
+
+For a complete jupyter notebook file please refer to the [github page](https://github.com/KamranMK/dataquest-projects/tree/master/winning-jeopardy) of the project.
