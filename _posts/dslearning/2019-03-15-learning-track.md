@@ -87,6 +87,3 @@ Introduction to Statistical Learning (ISLR) is an excellent resource to learn ma
 MIT 18-05 is a great introductory course on Probability & Statistics. It covers major topics such as probability distributions, central limit theorem, bayesian inference and regression.
 
 [MIT OCW Introduction to Probability & Statistics](https://ocw.mit.edu/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/){:target="_blank"}
-
-
-
