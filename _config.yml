@@ -17,7 +17,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Datacurious"
+title                    : "Staycurious"
 title_separator          : "-"
 name                     : "Kamran Mammadzada"
 description              : "Me and Data Science."
@@ -216,9 +216,9 @@ kramdown:
 
 
 # Sass/SCSS
-sass:
-  sass_dir: _sass
-  style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+# sass:
+#   sass_dir: _sass
+#   style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
 
 # Outputting
