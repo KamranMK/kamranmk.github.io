@@ -3,7 +3,7 @@ layout: category
 permalink: /data-science-learning/
 title: "Data Science Learning"
 excerpt: "Share and learn together"
-author_profile: true
+author_profile:   
 header:
     overlay_image: "/images/ds_learning.jpg"
     overlay_filter: 0.5
