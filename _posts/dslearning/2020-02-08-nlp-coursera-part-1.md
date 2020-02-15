@@ -66,10 +66,6 @@ Next section, "Brief overview of the next weeks" is skipped since it simply summ
 # Linguistic Knowledge in NLP
 
 Natural Language Processing and understanding is not only about mathematics but also linguistics. Thus its important to cover the following NLP Pyramid.
-<figure>
-    <a href="/images/coursera-nlp/coursera-nlp-w1-2.png"><img src="/images/coursera-nlp/coursera-nlp-w1-2.png"></a>
-    <figcaption>NLP Coursera - Week 1 - NLP Pyramid</figcaption>
-</figure>
 
 To understand the above pyramid, let's say we have a sentence as an example. There are multiple stages of analysis of that sentence
 * Morphology - Morphology is the study of the structure and formation of words. Basically everything that concerns individual words in the sentence. At this stage we care about 
@@ -91,4 +87,61 @@ Some libraries and tools to use to explore more of each of the stages in the pyr
 
 To explore further the relationships between words such as synonyms (two different words with similar meaning) or homonyms (two or more words with same spelling but different meanings and origins), libraries such as [WordNet](https://wordnet.princeton.edu/){:target="_blank"} - a lexical database for English and [BabelNet](https://babelnet.org/){:target="_blank"} - the multilingual alternative to wordnet, would be useful to explore.
 
-Still in progress
+### Linguistic knowledge + Deep Learning
+
+In NLP, one of the tasks is reasoning. Let's say there is a story. Mary got the football, she went to the kitchen, she left the ball there. Here we have some story, and now we have a question after this story, where is the football now? LSTM networks, a particular type of recurrent neural networks, could be used in this scenario. 
+
+<figure>
+    <a href="/images/coursera-nlp/coursera-nlp-w1-2.png"><img src="/images/coursera-nlp/coursera-nlp-w1-2.png"></a>
+    <figcaption>NLP Coursera - Week 1 - Linguistic Knowledge + Deep Learning</figcaption>
+</figure>
+
+In the picture above we can see that the red lines (or edges) stand for co-reference, which means that mary and she represent the same entity - that is Mary. Meanwhile, green line represents hypernyms [(see Wikipedia)](https://en.wikipedia.org/wiki/Hyponymy_and_hypernymy). In our case football is a type of a ball.
+
+In summary, the knowledge of linguistics allows to identify a method for tackling an NLP challenge, in our case by identifying these relationships we could be adding more edges to our DAG-LTSM approach. DAG-LTSM stands or Dynamic Acyclic Graph - Long Short Term Memory Recurrent Neural Network (a mouthful).
+
+### Syntax: dependency & constituency trees
+
+Another example of linguistic knowledge used in applied NLP is representing syntax via dependency or constituency trees. The images below show examples. In case of dependency trees, (left image) the sentence would be parsed based on various dependencies present in the sentence (e.g subject, object, modifier and etc.). In case of constituency trees a parser would parse the sentence from bottom to top to get a hierarchial structure. Each of the nodes represent a syntactial element (e.g. Noun, noun phrase, verb, verb phrase). By parsing it in a hierarchical structure it allows to find named entities (NE) such as New York City, since NEs are most likely to be noun phrases. 
+
+<figure class="third">
+    <a href="/images/coursera-nlp/coursera-nlp-w1-2.png"><img src="/images/coursera-nlp/coursera-nlp-w1-3.png"></a>
+    <a href="/images/coursera-nlp/coursera-nlp-w1-2.png"><img src="/images/coursera-nlp/coursera-nlp-w1-4.png"></a>
+    <a href="/images/coursera-nlp/coursera-nlp-w1-5.png"><img src="/images/coursera-nlp/coursera-nlp-w1-5.png"></a>
+    <figcaption>NLP Coursera - Week 1 - Linguistic Knowledge + Deep Learning</figcaption>
+</figure>
+
+It is also useful in sentiment analysis. In sentiment analysis, we try to predict the sentiment given the text. In the image above (3) we can see that a parser similar to the previously mentioned one would have a tree structure with nodes being individual words with a certain sentiment. By looking at nodes the overall sentiment could be calculated. This is an example of using recurrent neural network or DAG networks to predict sentiments, but in practice simple classification at times is sufficient enough.
+
+# Text Preprocessing
+
+Text can be thought of as sequence of:
+* Characters
+* Words
+* Phrases and named entities
+* Sentences
+* Paragraphs
+
+Let's start with words. Word - a meaningful sequence of characters. Usually we can find boundaries of words, with the exception of some words in German and all words in Japanese. To split a text into words we would need to tokenize the sentence. 
+
+## Tokenization
+
+Tokenization is a process that splits an input sequence into so-called tokens. Token is a useful unit for semantic processing. It could be a word, sentence, paragraph, etc.. A simple whitespace tokenizer is available in nltk, as an example:
+
+```python
+from nltk.tokenize import WhitespaceTokenizer
+s = "This is Andrew's text, isn't it?"
+WhitespaceTokenizer().tokenize(s)
+```
+    ['This', 'is', "Andrew's", 'text,', "isn't", 'it?']
+
+The problem of tokenizing in this way is that `it?` is the same as `it` and `text,` is same as `text`.
+
+We can try to split by punctuation.
+
+```python
+from nltk.tokenize import WordPunctTokenizer
+s = "This is Andrew's text, isn't it?"
+WordPunctTokenizer().tokenize(s)
+```
+    ['This', 'is', 'Andrew', "'", 's', 'text', ',', 'isn', "'", 't', 'it', '?']
