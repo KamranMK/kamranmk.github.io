@@ -46,7 +46,7 @@ Semantic slot filling is a problem in Natural Language Processing which describe
     Then we could use a model from a class of discriminative models called Conditional Random Fields (CRF). They are nicely explained by Aditya Prasad in his [post](https://towardsdatascience.com/conditional-random-fields-explained-e5b8256da776){:target="_blank"}. They might be a good candidate in NLP tasks because contextual information or state of the neighbors affect the current prediction of the model. In this scenario we would essentially maximize the probability of the word or word structure given the text. The high level formulas are below
 
 <figure>
-    <a href="/images/coursera-nlp/coursera-nlp-w1-1.png"><img src="/images/coursera-nlp/coursera-nlp-w1-1.png"></a>
+    <a href="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-1.PNG"><img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-1.PNG"></a>
     <figcaption>NLP Coursera - Week 1 - Semantic Slot Filling CRF</figcaption>
 </figure>
 
@@ -92,7 +92,7 @@ To explore further the relationships between words such as synonyms (two differe
 In NLP, one of the tasks is reasoning. Let's say there is a story. Mary got the football, she went to the kitchen, she left the ball there. Here we have some story, and now we have a question after this story, where is the football now? LSTM networks, a particular type of recurrent neural networks, could be used in this scenario. 
 
 <figure>
-    <a href="/images/coursera-nlp/coursera-nlp-w1-2.png"><img src="/images/coursera-nlp/coursera-nlp-w1-2.png"></a>
+    <a href="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-2.PNG"><img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-2.PNG"></a>
     <figcaption>NLP Coursera - Week 1 - Linguistic Knowledge + Deep Learning</figcaption>
 </figure>
 
@@ -105,9 +105,9 @@ In summary, the knowledge of linguistics allows to identify a method for tacklin
 Another example of linguistic knowledge used in applied NLP is representing syntax via dependency or constituency trees. The images below show examples. In case of dependency trees, (left image) the sentence would be parsed based on various dependencies present in the sentence (e.g subject, object, modifier and etc.). In case of constituency trees a parser would parse the sentence from bottom to top to get a hierarchial structure. Each of the nodes represent a syntactial element (e.g. Noun, noun phrase, verb, verb phrase). By parsing it in a hierarchical structure it allows to find named entities (NE) such as New York City, since NEs are most likely to be noun phrases. 
 
 <figure class="third">
-    <a href="/images/coursera-nlp/coursera-nlp-w1-2.png"><img src="/images/coursera-nlp/coursera-nlp-w1-3.png"></a>
-    <a href="/images/coursera-nlp/coursera-nlp-w1-2.png"><img src="/images/coursera-nlp/coursera-nlp-w1-4.png"></a>
-    <a href="/images/coursera-nlp/coursera-nlp-w1-5.png"><img src="/images/coursera-nlp/coursera-nlp-w1-5.png"></a>
+    <a href="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-3.PNG"><img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-3.PNG"></a>
+    <a href="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-4.PNG"><img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-4.PNG"></a>
+    <a href="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-5.PNG"><img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-5.PNG"></a>
     <figcaption>NLP Coursera - Week 1 - Linguistic Knowledge + Deep Learning</figcaption>
 </figure>
 
@@ -145,3 +145,114 @@ s = "This is Andrew's text, isn't it?"
 WordPunctTokenizer().tokenize(s)
 ```
     ['This', 'is', 'Andrew', "'", 's', 'text', ',', 'isn', "'", 't', 'it', '?']
+    
+The problem here is that `'s` or `isn` are not meaningful on their own.
+
+To address these challenges we can use `TreebankWordTokenizer` which uses rules of english grammar to tokenize sequences.
+
+```python
+from nltk.tokenize.treebank import TreebankWordTokenizer
+s = "This is Andrew's text, isn't it?"
+TreebankWordTokenizer().tokenize(s)
+```
+    ['This', 'is', 'Andrew', "'s", 'text', ',', 'is', "n't", 'it', '?']
+
+Now `'s` and `isn` are more meaningful for processing. This tokenization method in this context makes more sense and allows us to tokenize the sentence in a meaningful way.
+
+## Token Normalization
+
+The goal of token normalization is to remove insignificant differences between otherwise identical words to make for better searching and matching of same tokens.
+
+For example, we may want the same token for different forms of words
+    * wolf, wolves --> wolf
+    * talk, talks --> talk
+
+There are few ways of normalizing tokens. Most common ones are:
+    * Stemming
+    * Lemmatization
+
+Both methods aim to reduce various forms of a word to a common base form. For example, 
+
+    * am, are, is => be
+    * car, cars, car's, cars' => car
+
+The result of this mapping of text will be something like:
+
+    * the boy's cars are different colors => the boy car be differ color
+
+However there are differences in the two methods. **Stemming** is a process of removing and replacing the ends of words (suffix, prefix) to get to the root of the word, called *stem*, while **Lemmatization** uses vocabulary and morphological analysis normally aiming to remove inflectional endings only and to return the base or dictionary form of a word, which is known as the *lemma*.
+
+### Stemming Example
+
+The most common algorithm for stemming English, and one that has repeatedly been shown to be empirically very effective, is Porter's algorithm. It consits of 5 phases of word reductions, applied sequentially. Below is the example of phase I rule:
+
+<figure>
+    <a href="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-6.PNG"><img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-6.PNG"></a>
+    <figcaption>NLP Coursera - Week 1 - Porter's Stemmer</figcaption>
+</figure>
+
+NLTK includes a porter stemmer module.
+
+```python
+from nltk.stem.porter import PorterStemmer
+stemmer = PorterStemmer()
+plurals = ['caresses', 'flies', 'dies', 'mules', 'denied', 'meeting', 
+            'stating', 'siezing', 'itemization', 'sensational', 'traditional',
+            'reference', 'colonizer' 'plotted', 'feet', 'cats', 'talked', 'ponies']
+singles = [stemmer.stem(plural) for plural in plurals]
+print(' '.join(singles))
+```
+    caress fli die mule deni meet state siez item sensat tradit refer colonizerplot feet cat talk poni
+
+You can see from the example of `feet` that the stemmer fails on irregular forms and at times like with `ponies` produces non-words.
+
+
+### Lemmatization Example
+
+A WordNet lemmatizer could be used to lookup lemmas.
+
+```python
+from nltk.stem import WordNetLemmatizer
+wordnetlemmatizer = WordNetLemmatizer()
+plurals = ['caresses', 'flies', 'dies', 'mules', 'denied', 'meeting', 
+            'stating', 'siezing', 'itemization', 'sensational', 'traditional',
+            'reference', 'colonizer' 'plotted', 'feet', 'cats', 'talked', 'ponies']
+singles = [wordnetlemmatizer.lemmatize(plural) for plural in plurals]
+print(' '.join(singles))
+```
+    caress fly dy mule denied meeting stating siezing itemization sensational traditional reference colonizerplotted foot cat talked pony
+
+The challenge here is that not all forms are lemmatized.
+
+Ideally, the choice of lemmatization or stemming should be chosen based on the task at hand.
+
+## Further normalization
+
+We can further normalize tokens in our text by applying certain logic. Let's look at some of these.
+
+### Normalizing capital letters
+
+In cases where capital letters are not necessary, we can lowercase capital letters. For example:
+    * Product -> product
+    * Us, us -> both are - us (in case both are pronoun).
+    * US vs us -> a bit tricky since US would mean USA and us would be pronoun.
+
+Overall, to normalize capital letters we can use heuristics:
+    * lowercasing the beginning of the sentence
+    * lowercasing words in titles
+    * leaving mid-sentence words as they are
+Its important to note that sometimes capitalization is needed for things like Named Entity Recognition, where we have named entities (e.g. Paris).
+
+Another method to find out true casing of each words is using maching learning, but its quite hard and is out of scope of this class.
+
+### Acronyms
+
+We can also normalize further by addressing acronyms such as:
+    * eta, e.t.a, E.T.A -> E.T.A.
+    * the US, u.s.a, U.S.A, U.S -> USA
+    * U.N, UN -> United Nations
+
+A way to normalize acronyms would be writing regular expressions but its quite hard, since we need to think of all possible ways an acronyms could be written.
+
+# Feature extraction
+
