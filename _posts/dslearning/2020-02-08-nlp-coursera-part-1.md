@@ -47,13 +47,8 @@ Semantic slot filling is a problem in Natural Language Processing which describe
     Then we could use a model from a class of discriminative models called Conditional Random Fields (CRF). They are nicely explained by Aditya Prasad in his [post](https://towardsdatascience.com/conditional-random-fields-explained-e5b8256da776){:target="_blank"}. They might be a good candidate in NLP tasks because contextual information or state of the neighbors affect the current prediction of the model. In this scenario we would essentially maximize the probability of the word or word structure given the text. The high level formulas are below
 
 <figure>
-    <a href="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-1.PNG"><img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-1.PNG"></a>
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-1.PNG">
     <figcaption>NLP Coursera - Week 1 - Semantic Slot Filling CRF</figcaption>
-</figure>
-
-<figure>
-    <a href="/images/coursera-nlp/coursera-nlp-w1-1.PNG"><img src="/images/coursera-nlp/coursera-nlp-w1-1.PNG"></a>
-    <figcaption>NLP Coursera - Week 1 - Semantic Slot Filling CRF 2</figcaption>
 </figure>
 
 * **Long Short Term Memory (LSTM) networks** - are a type of deep learning approach. In this scenario we would simply feed the sequence of words (vectorized by potentially one-hot encoding) to a neural network with a certain architecture/topology and numerous parameters.
@@ -98,7 +93,7 @@ To explore further the relationships between words such as synonyms (two differe
 In NLP, one of the tasks is reasoning. Let's say there is a story. Mary got the football, she went to the kitchen, she left the ball there. Here we have some story, and now we have a question after this story, where is the football now? LSTM networks, a particular type of recurrent neural networks, could be used in this scenario. 
 
 <figure>
-    <a href="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-2.PNG"><img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-2.PNG"></a>
+    <img src="/images/coursera-nlp/coursera-nlp-w1-2.PNG">
     <figcaption>NLP Coursera - Week 1 - Linguistic Knowledge + Deep Learning</figcaption>
 </figure>
 
@@ -111,9 +106,9 @@ In summary, the knowledge of linguistics allows to identify a method for tacklin
 Another example of linguistic knowledge used in applied NLP is representing syntax via dependency or constituency trees. The images below show examples. In case of dependency trees, (left image) the sentence would be parsed based on various dependencies present in the sentence (e.g subject, object, modifier and etc.). In case of constituency trees a parser would parse the sentence from bottom to top to get a hierarchial structure. Each of the nodes represent a syntactial element (e.g. Noun, noun phrase, verb, verb phrase). By parsing it in a hierarchical structure it allows to find named entities (NE) such as New York City, since NEs are most likely to be noun phrases. 
 
 <figure class="third">
-    <a href="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-3.PNG"><img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-3.PNG"></a>
-    <a href="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-4.PNG"><img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-4.PNG"></a>
-    <a href="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-5.PNG"><img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-5.PNG"></a>
+    <img src="/images/coursera-nlp/coursera-nlp-w1-3.PNG">
+    <img src="/images/coursera-nlp/coursera-nlp-w1-4.PNG">
+    <img src="/images/coursera-nlp/coursera-nlp-w1-5.PNG">
     <figcaption>NLP Coursera - Week 1 - Linguistic Knowledge + Deep Learning</figcaption>
 </figure>
 
