@@ -51,6 +51,11 @@ Semantic slot filling is a problem in Natural Language Processing which describe
     <figcaption>NLP Coursera - Week 1 - Semantic Slot Filling CRF</figcaption>
 </figure>
 
+<figure>
+    <a href="/images/coursera-nlp/coursera-nlp-w1-1.PNG"><img src="/images/coursera-nlp/coursera-nlp-w1-1.PNG"></a>
+    <figcaption>NLP Coursera - Week 1 - Semantic Slot Filling CRF 2</figcaption>
+</figure>
+
 * **Long Short Term Memory (LSTM) networks** - are a type of deep learning approach. In this scenario we would simply feed the sequence of words (vectorized by potentially one-hot encoding) to a neural network with a certain architecture/topology and numerous parameters.
 
 ### Deep Learning vs Traditional NLP
