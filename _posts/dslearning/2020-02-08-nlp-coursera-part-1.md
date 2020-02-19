@@ -3,6 +3,7 @@ title: "Exploring Natural Language Processing with Coursera - Part 1"
 date: 2020-02-08
 tags: [data science learning, natural language processing, nlp, coursera]
 category: [data-science-learning]
+classes: full-wide
 author_profile: false
 excerpt: "Step by step exploration of NLP on Coursera - Week 1"
 toc: True
