@@ -47,7 +47,7 @@ Semantic slot filling is a problem in Natural Language Processing which describe
     Then we could use a model from a class of discriminative models called Conditional Random Fields (CRF). They are nicely explained by Aditya Prasad in his [post](https://towardsdatascience.com/conditional-random-fields-explained-e5b8256da776){:target="_blank"}. They might be a good candidate in NLP tasks because contextual information or state of the neighbors affect the current prediction of the model. In this scenario we would essentially maximize the probability of the word or word structure given the text. The high level formulas are below
 
 <figure>
-    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-1.PNG">
+    <img src="/images/coursera-nlp/coursera-nlp-w1-1.PNG">
     <figcaption>NLP Coursera - Week 1 - Semantic Slot Filling CRF</figcaption>
 </figure>
 
@@ -165,21 +165,21 @@ Now `'s` and `isn` are more meaningful for processing. This tokenization method 
 The goal of token normalization is to remove insignificant differences between otherwise identical words to make for better searching and matching of same tokens.
 
 For example, we may want the same token for different forms of words
-    * wolf, wolves --> wolf
-    * talk, talks --> talk
+* wolf, wolves --> wolf
+* talk, talks --> talk
 
 There are few ways of normalizing tokens. Most common ones are:
-    * Stemming
-    * Lemmatization
+* Stemming
+* Lemmatization
 
 Both methods aim to reduce various forms of a word to a common base form. For example, 
 
-    * am, are, is => be
-    * car, cars, car's, cars' => car
+* am, are, is => be
+* car, cars, car's, cars' => car
 
 The result of this mapping of text will be something like:
 
-    * the boy's cars are different colors => the boy car be differ color
+* the boy's cars are different colors => the boy car be differ color
 
 However there are differences in the two methods. **Stemming** is a process of removing and replacing the ends of words (suffix, prefix) to get to the root of the word, called *stem*, while **Lemmatization** uses vocabulary and morphological analysis normally aiming to remove inflectional endings only and to return the base or dictionary form of a word, which is known as the *lemma*.
 
@@ -188,7 +188,7 @@ However there are differences in the two methods. **Stemming** is a process of r
 The most common algorithm for stemming English, and one that has repeatedly been shown to be empirically very effective, is Porter's algorithm. It consits of 5 phases of word reductions, applied sequentially. Below is the example of phase I rule:
 
 <figure>
-    <a href="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-6.PNG"><img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-6.PNG"></a>
+    <img src="/images/coursera-nlp/coursera-nlp-w1-6.PNG">
     <figcaption>NLP Coursera - Week 1 - Porter's Stemmer</figcaption>
 </figure>
 
@@ -234,14 +234,17 @@ We can further normalize tokens in our text by applying certain logic. Let's loo
 ### Normalizing capital letters
 
 In cases where capital letters are not necessary, we can lowercase capital letters. For example:
-    * Product -> product
-    * Us, us -> both are - us (in case both are pronoun).
-    * US vs us -> a bit tricky since US would mean USA and us would be pronoun.
+
+* Product -> product
+* Us, us -> both are - us (in case both are pronoun).
+* US vs us -> a bit tricky since US would mean USA and us would be pronoun.
 
 Overall, to normalize capital letters we can use heuristics:
-    * lowercasing the beginning of the sentence
-    * lowercasing words in titles
-    * leaving mid-sentence words as they are
+
+* lowercasing the beginning of the sentence
+* lowercasing words in titles
+* leaving mid-sentence words as they are
+
 Its important to note that sometimes capitalization is needed for things like Named Entity Recognition, where we have named entities (e.g. Paris).
 
 Another method to find out true casing of each words is using maching learning, but its quite hard and is out of scope of this class.
@@ -249,11 +252,111 @@ Another method to find out true casing of each words is using maching learning, 
 ### Acronyms
 
 We can also normalize further by addressing acronyms such as:
-    * eta, e.t.a, E.T.A -> E.T.A.
-    * the US, u.s.a, U.S.A, U.S -> USA
-    * U.N, UN -> United Nations
+
+* eta, e.t.a, E.T.A -> E.T.A.
+* the US, u.s.a, U.S.A, U.S -> USA
+* U.N, UN -> United Nations
 
 A way to normalize acronyms would be writing regular expressions but its quite hard, since we need to think of all possible ways an acronyms could be written.
 
 # Feature extraction
 
+Now that we have tokenized our text, we can move to extracting features from it. The first method is Bag of Words (BOW).
+
+## Bag of Words (BOW)
+
+Basically, bag of words approach aims to vectorize the given text (text vectorization) by generating features which represent tokens in the text and their frequency of ocurrence within each text. Thus each token in the text will become a feature and the value of that feature will be a numeric value representing frequency or sometimes simply presence (0, 1). The representation allows us to find documents that are similar as well allows us to learn about the meaning of the document. If interested check out deep-dive into BOW [here](https://machinelearningmastery.com/gentle-introduction-bag-words-model/){:target="_blank"}
+
+Example of a BOW representation can be seen below
+
+<figure>
+    <img src="/images/coursera-nlp/coursera-nlp-w1-7.PNG">
+    <figcaption>NLP Coursera - Week 1 - Bag of Words representation</figcaption>
+</figure>
+
+The limitations of BOW are:
+
+* orders are not preserved ("good", "movie" instead of "good movie")
+* counters are not normalized, thus some tokens will be more often than others or vice versa
+
+To preserve token ordering, it's possible to count token pairs, triplets, etc.
+
+## N-Grams
+
+Simply put, n-gram is a sequence of N words (e.g. Orange county (2-gram), Johny likes coffee (3-gram)). By using n-grams we preserve local word order, but this approach can generate too many features at times growing exponentially due to combinations of words (e.g. it is a good and interesting movie, it is, a good movie, good and interesting movie, interesting movie).
+
+<figure>
+    <img src="/images/coursera-nlp/coursera-nlp-w1-8.PNG">
+    <figcaption>NLP Coursera - Week 1 - Bag of Words representation</figcaption>
+</figure>
+
+We can remove:
+
+* High-frequency n-grams - these usually are articles, prepositions, generally called stopwords (e.g. and, a, the). They are not useful since they won't help differentiate texts.
+* Low frequency n-grams - typos in text, rare words can influence the models to overfit, since these values obviously happen in a specific document and can be used as a differentiating factor
+
+We are left with medium frequency n-grams. Now we can actually look at the frequency of these n-grams, just as we did previously, to differentiate between texts. For example,  n-gram with smaller frequency can be more differentiating and would capture a specific meaning/issue in the text. To build on this idea we can use the notion of term frequency and inverse document frequency.
+
+## TF-IDF
+
+TF-IDF, in a nutshell, is a measure that evaluates how relevant a word is to a document in a collection of documents and also indicates the oimportance of a term $t$ in a document $d$. It combines term frequency (TF) and inverse document frequency (IDF).
+
+### Term Frequency (TF)
+
+Term frequency represents how many times a word/token appears in a document.
+
+$$tf(t, d)$$
+
+frequency for term (or n-gram) $t$ in document $d$. There are different variants for calculating TF.
+
+| Weighting Scheme | TF - Weight | Explanation |
+|:-----------------|:-----------:|:------------|
+| binary   | 0, 1   | Simply take 0 or 1 based on whether the token is present in text or not  |
+| raw count   | $f_{t, d}$   | Just a count of how many times a token occurs in a document, denoted $f$   |
+| term frequency   | $f_{t, d}/\sum_{t'\in{d}} f_{t',d}$   | Look at all counts of all terms and then normalize the count of individual tokens across the document. Result is a sort of probability distribution |
+| log normalization  | $1+log(f_{t,d})$   | Use logarithmic scale of raw counts. Might help in solving the task better  |
+
+
+### Inverse Document Frequency (IDF)
+
+Next, let's look at IDF. The inverse document frequency (IDF) is a is used for measuring the importance of a term in a text document collection. Let's denote:
+
+* $ N = \|D\|$ - total number of documents in corpus
+* $\|{d\in D:t\in d}\|$ - number of documents where term $t$ appears
+* $idf(t,D)=log(\frac{N}{\|{d\in D:t\in d}\|})$ - inverse document frequency
+
+
+Now to computer TF-IDF we simply need to multiple the term frequency (TF) by inverse document frequency (IDF).
+$$tfidf(t, d, D) = tf(t, d) * idf(t, D)$$
+
+A high weight in TF-IDF value is reached by a high term frequency and a low document frequency of the term in the whole collection of documents. The number of times a word appears in a document (term-frequency) is offset (inversed) by number of documents that contain the word (document frequency).
+
+With this we are able to find information that is not as frequent in all documents but which captures critical information across the collection.
+
+Now to use this idea and rethink our BOW we would get the normalized TF-IDF values in the vectorized representation. L2 normalization is an option.
+
+<figure>
+    <img src="/images/coursera-nlp/coursera-nlp-w1-9.PNG">
+    <figcaption>NLP Coursera - Week 1 - Bag of Words representation</figcaption>
+</figure>
+
+For example, good movie has 0.17 which means that it might not capture any specific information that might be valuable but "did not" has 0.47, indicating that we might be capturing some useful information. Let's have a look at python implementation.
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+import pandas as pd
+texts = ["good movie", "not a good movie", "did not like", "i like it", "good one"]
+tfidf = TfidfVectorizer(min_df=2, max_df=0.5, ngram_range=(1,2))
+features = tfidf.fit_transform(texts)
+pd.DataFrame(
+    features.todense(),
+    columns=tfidf.get_feature_names()
+)
+```
+
+    good movie      like     movie       not
+    0    0.707107  0.000000  0.707107  0.000000
+    1    0.577350  0.000000  0.577350  0.577350
+    2    0.000000  0.707107  0.000000  0.707107
+    3    0.000000  1.000000  0.000000  0.000000
+    4    0.000000  0.000000  0.000000  0.000000
