@@ -86,7 +86,7 @@ However there are differences in the two methods. **Stemming** is a process of r
 The most common algorithm for stemming English, and one that has repeatedly been shown to be empirically very effective, is Porter's algorithm. It consits of 5 phases of word reductions, applied sequentially. Below is the example of phase I rule:
 
 <figure>
-    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-6.PNG">
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-6.PNG">
     <figcaption>NLP Coursera - Week 1 - Porter's Stemmer</figcaption>
 </figure>
 
@@ -168,7 +168,7 @@ Basically, bag of words approach aims to vectorize the given text (text vectoriz
 Example of a BOW representation can be seen below
 
 <figure>
-    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-7.PNG">
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-7.PNG">
     <figcaption>NLP Coursera - Week 1 - Bag of Words representation</figcaption>
 </figure>
 
@@ -184,7 +184,7 @@ To preserve token ordering, it's possible to count token pairs, triplets, etc.
 Simply put, n-gram is a sequence of N words (e.g. Orange county (2-gram), Johny likes coffee (3-gram)). By using n-grams we preserve local word order, but this approach can generate too many features at times growing exponentially due to combinations of words (e.g. it is a good and interesting movie, it is, a good movie, good and interesting movie, interesting movie).
 
 <figure>
-    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-8.PNG">
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-8.PNG">
     <figcaption>NLP Coursera - Week 1 - Bag of Words representation</figcaption>
 </figure>
 
@@ -234,7 +234,7 @@ With this we are able to find information that is not as frequent in all documen
 Now to use this idea and rethink our BOW we would get the normalized TF-IDF values in the vectorized representation. L2 normalization is an option.
 
 <figure>
-    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-9.PNG">
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-9.PNG">
     <figcaption>NLP Coursera - Week 1 - Bag of Words representation</figcaption>
 </figure>
 
@@ -285,7 +285,7 @@ Now that we have features developed, we will discuss first text classification m
 Let's start with first model. We have bag of 1-grams with respective TF-IDF values. That way we have 25000 rows with 74849 columns for training. Nevertheless, we get an extremely sparse matrix with 99.8 % of zeros.
 
 <figure>
-    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-10.PNG">
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-10.PNG">
     <figcaption>NLP Coursera - Week 1 - Sparse Matrix of bag of 1-grams</figcaption>
 </figure>
 
@@ -294,7 +294,7 @@ The fact of our training vector being so sparse applies some restrictions on wha
 One of the suitable options for this specific case is Logistic Regression. It tries to predict the probability of a review being positive given the features of a specific review or given the set of words in a review. Logistic Regression is a linear model and that's why it can handle sparse data quite well and is fast to train, with further model weights being relatively easy to interpret.
 
 <figure>
-    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-11.PNG">
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-11.PNG">
     <figcaption>NLP Coursera - Week 1 - Logistic Regression</figcaption>
 </figure>
 
@@ -303,7 +303,7 @@ Basically, if the output of the linear combination of our features is 0 then the
 These are the weights which we would get if we train a logistic regression over bag of 1-grams with TF-IDF values.
 
 <figure>
-    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-12.PNG">
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-12.PNG">
     <figcaption>NLP Coursera - Week 1 - Logistic Regression</figcaption>
 </figure>
 
@@ -314,14 +314,14 @@ We can see that the model is performing better (88.5% accuracy) than random (50%
 Let's try to make our model a little bit better. We can add 2-grams but only keep those that have been seen more than 5 times (potential typos and combinations that won't add value to our model). We get 25000 rows with now whopping 156821 columns/features. We can see below that this model is also quite sparse.
 
 <figure>
-    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-13.PNG">
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-13.PNG">
     <figcaption>NLP Coursera - Week 1 - Logistic Regression</figcaption>
 </figure>
 
 Let's train our logistic regression over bag of 1,2 grams with TF-IDF values. Our model has a boost in accuracy with 89.9% (+1.5%). Now our model also includes 2-grams within the top positive and top negative weights.
 
 <figure>
-    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-14.PNG">
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-14.PNG">
     <figcaption>NLP Coursera - Week 1 - Logistic Regression</figcaption>
 </figure>
 
@@ -339,3 +339,23 @@ There are couple of ways that we can increase the accuracy of our sentiment clas
     - We can try implementing deep learning on this dataset. The [paper here](https://arxiv.org/pdf/1512.08183.pdf){:target="_blank"} has used Deep Learning on this IMDB dataset and as of 2016, the accuracy of this approach on test set is 92.14% (+2.5%). The accuracy gain from using deep learning is not as much considering the explainability of DLP vs Linear and other models.
 
 # Hashing trick in Spam Filtering
+
+Before going forward with spam filtering task, let's look at how we would handle mapping n-grams to feature indices. As a reminder, we want to represent our bag of words (BOW) in a vectorized format where n-grams are actually represented by their feature index or the index of the column where for example TF-IDF values would be stored. For that, we need to maintain a the mapping of n-grams to feature indices. There are two scenarios here:
+
+* Small Dataset
+    - We simply store {n-gram -> feature index} hash map (or dictionary in python)
+* Large Dataset
+    - In case of huge datasets (e.g. 1TB of text distributed on 10 computers) simply having a hash map becomes more challenging.
+
+The first challenge with having a hash map in case of large datasets is that the hash map may not fit in the memory of one machine. We could use a database to store the correspondence of n-gram->feature index, but it doesn't scale well since all our machines would depend on one database to store the correpondence. Another challenge is synchronizing across 10 machines the correspondence of n-gram->feature index, since if one machine updates the mapping then other would also need to do the same. This can become a bottleneck in the nlp pipeline.
+
+There is an easier way, which is replacing the hash map with the hash value of the specific n-gram modulo 2^20, see below.
+
+<figure>
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-15.PNG">
+    <figcaption>NLP Coursera - Week 1 - Logistic Regression</figcaption>
+</figure>
+
+Hash is a function that converts the string into a number. For some strings, hash functions can produce same numbers, but despite that, in practice it works, and those collisions can be neglected if we take modulo of 2 to high power. This hashing has been implemented in [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.HashingVectorizer.html){:target="_blank"} and [vowpal wabbit](https://vowpalwabbit.org/){:target="_blank"} library.
+
+Alright, now let's take the Spam Filtering Task. 
