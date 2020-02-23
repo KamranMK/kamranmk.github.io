@@ -5,7 +5,7 @@ tags: [data science learning, natural language processing, nlp, coursera]
 category: [data-science-learning]
 classes: full-wide
 author_profile: false
-excerpt: "Week 1 - Introduction to NLP and the course"
+excerpt: "Week 1: Part 1 - Introduction to NLP and the course"
 toc: True
 toc_label: "Contents"
 toc_sticky: true

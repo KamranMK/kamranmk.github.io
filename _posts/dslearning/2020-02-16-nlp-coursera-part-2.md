@@ -5,7 +5,7 @@ tags: [data science learning, natural language processing, nlp, coursera]
 category: [data-science-learning]
 classes: full-wide
 author_profile: false
-excerpt: "Week 1 - From plain text to their classification"
+excerpt: "Week 1: Part 2 - From plain text to their classification"
 toc: True
 toc_label: "Contents"
 toc_sticky: true
@@ -86,7 +86,7 @@ However there are differences in the two methods. **Stemming** is a process of r
 The most common algorithm for stemming English, and one that has repeatedly been shown to be empirically very effective, is Porter's algorithm. It consits of 5 phases of word reductions, applied sequentially. Below is the example of phase I rule:
 
 <figure>
-    <img src="/images/coursera-nlp/coursera-nlp-w1-6.PNG">
+    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-6.PNG">
     <figcaption>NLP Coursera - Week 1 - Porter's Stemmer</figcaption>
 </figure>
 
@@ -168,7 +168,7 @@ Basically, bag of words approach aims to vectorize the given text (text vectoriz
 Example of a BOW representation can be seen below
 
 <figure>
-    <img src="/images/coursera-nlp/coursera-nlp-w1-7.PNG">
+    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-7.PNG">
     <figcaption>NLP Coursera - Week 1 - Bag of Words representation</figcaption>
 </figure>
 
@@ -184,7 +184,7 @@ To preserve token ordering, it's possible to count token pairs, triplets, etc.
 Simply put, n-gram is a sequence of N words (e.g. Orange county (2-gram), Johny likes coffee (3-gram)). By using n-grams we preserve local word order, but this approach can generate too many features at times growing exponentially due to combinations of words (e.g. it is a good and interesting movie, it is, a good movie, good and interesting movie, interesting movie).
 
 <figure>
-    <img src="/images/coursera-nlp/coursera-nlp-w1-8.PNG">
+    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-8.PNG">
     <figcaption>NLP Coursera - Week 1 - Bag of Words representation</figcaption>
 </figure>
 
@@ -234,7 +234,7 @@ With this we are able to find information that is not as frequent in all documen
 Now to use this idea and rethink our BOW we would get the normalized TF-IDF values in the vectorized representation. L2 normalization is an option.
 
 <figure>
-    <img src="/images/coursera-nlp/coursera-nlp-w1-9.PNG">
+    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-9.PNG">
     <figcaption>NLP Coursera - Week 1 - Bag of Words representation</figcaption>
 </figure>
 
@@ -285,7 +285,7 @@ Now that we have features developed, we will discuss first text classification m
 Let's start with first model. We have bag of 1-grams with respective TF-IDF values. That way we have 25000 rows with 74849 columns for training. Nevertheless, we get an extremely sparse matrix with 99.8 % of zeros.
 
 <figure>
-    <img src="/images/coursera-nlp/coursera-nlp-w1-10.PNG">
+    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-10.PNG">
     <figcaption>NLP Coursera - Week 1 - Sparse Matrix of bag of 1-grams</figcaption>
 </figure>
 
@@ -294,7 +294,7 @@ The fact of our training vector being so sparse applies some restrictions on wha
 One of the suitable options for this specific case is Logistic Regression. It tries to predict the probability of a review being positive given the features of a specific review or given the set of words in a review. Logistic Regression is a linear model and that's why it can handle sparse data quite well and is fast to train, with further model weights being relatively easy to interpret.
 
 <figure>
-    <img src="/images/coursera-nlp/coursera-nlp-w1-11.PNG">
+    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-11.PNG">
     <figcaption>NLP Coursera - Week 1 - Logistic Regression</figcaption>
 </figure>
 
@@ -303,7 +303,7 @@ Basically, if the output of the linear combination of our features is 0 then the
 These are the weights which we would get if we train a logistic regression over bag of 1-grams with TF-IDF values.
 
 <figure>
-    <img src="/images/coursera-nlp/coursera-nlp-w1-12.PNG">
+    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-12.PNG">
     <figcaption>NLP Coursera - Week 1 - Logistic Regression</figcaption>
 </figure>
 
@@ -314,16 +314,28 @@ We can see that the model is performing better (88.5% accuracy) than random (50%
 Let's try to make our model a little bit better. We can add 2-grams but only keep those that have been seen more than 5 times (potential typos and combinations that won't add value to our model). We get 25000 rows with now whopping 156821 columns/features. We can see below that this model is also quite sparse.
 
 <figure>
-    <img src="/images/coursera-nlp/coursera-nlp-w1-13.PNG">
+    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-13.PNG">
     <figcaption>NLP Coursera - Week 1 - Logistic Regression</figcaption>
 </figure>
 
 Let's train our logistic regression over bag of 1,2 grams with TF-IDF values. Our model has a boost in accuracy with 89.9% (+1.5%). Now our model also includes 2-grams within the top positive and top negative weights.
 
 <figure>
-    <img src="/images/coursera-nlp/coursera-nlp-w1-14.PNG">
+    <img src="https://github.com/KamranMK/kamranmk.github.io/blob/master/images/coursera-nlp/coursera-nlp-w1-14.PNG">
     <figcaption>NLP Coursera - Week 1 - Logistic Regression</figcaption>
 </figure>
 
 ## How to make the model even better
 
+There are couple of ways that we can increase the accuracy of our sentiment classifier.
+
+* **Play around with tokenization**
+    - In reviews people use special tokens such as emojis (e.g. ":)") and "!!!" can help. We can use those sequences of tokens and introduce to our model. This may or may not increase its performance.
+* **Try to normalize tokens**
+    - We can normalize tokens by *stemming* or *lemmatization*
+* **Try different models**
+    - We can also try models such as Naive Bayes, Support Vector Machines (SVM) and others that can handle sparse features
+* **Try Deep Learning**
+    - We can try implementing deep learning on this dataset. The [paper here](https://arxiv.org/pdf/1512.08183.pdf){:target="_blank"} has used Deep Learning on this IMDB dataset and as of 2016, the accuracy of this approach on test set is 92.14% (+2.5%). The accuracy gain from using deep learning is not as much considering the explainability of DLP vs Linear and other models.
+
+# Hashing trick in Spam Filtering
