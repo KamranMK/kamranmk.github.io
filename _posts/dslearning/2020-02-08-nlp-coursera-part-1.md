@@ -15,6 +15,8 @@ Recently, i decided to explore the world of Natural Language Processing. After s
 
 Ultimately these series of posts will cover my notes during my learning journey. It will also serve as a good reference point to quickly remind myself, and anyone who wishes for that fact, major topics in the course. Please feel free to leave a comment or suggestions on how to improve moving forward my note taking.
 
+*Disclaimer*: These series of posts simply represents a distilled version of the content from the course. It acts as a reminder for myself as well as for anybody who would like to also have notes equivalent of the course.
+
 Let's get started with Week 1.
 
 # Main approaches in NLP

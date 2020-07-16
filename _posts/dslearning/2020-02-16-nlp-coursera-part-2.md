@@ -445,3 +445,8 @@ Finally in this section, we would like to quickly introduce [Vowpal Wabbit libra
 * Uses feature hashing internally
 * Has lots of features
 * Really fast and scales well
+
+# Programming Assignment
+
+At this point in time the course provides a Programming Assignment on "Predicting tagson StackOverflow with Linear Models". You can find my solutions to the assignment [here](https://github.com/KamranMK/coursera-nlp/blob/master/week1/week1-MultilabelClassification-mysolution.ipynb){:target="_blank"}.
+
