@@ -92,3 +92,50 @@ There are two papers in here which have compared this approach of using 1D convo
 
 # Neural networks for characters
 
+This time we can treat the text as a sequence of characters. We would need to hot encode our characters with the alphabet representing the rows of a matrix and each character along with space representing the columns. This matrix will be sparse but it won't be that long, since the alphabet is finite.
+
+Just like with words we start with n-grams here as well.
+
+We use 1D convolutions on characters, starting with "c" character, we take the left as padding. We take a convolution and we get a result.
+
+<figure>
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-27.png">
+    <figcaption>NLP Coursera - Week 1 - 1D Convolutions on characters
+    </figcaption>
+</figure>
+
+We get values for the 1st filter by sliding the window in one direction - time. Thus its also called 1D convolution.
+
+Let's say we use 1024 filters. Next we add pooling. For each filter we take pairs of values and only extract the maximum of those two values (Max Pooling). Then we slide the window to the next pair and so on.
+
+<figure>
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-28.png">
+    <figcaption>NLP Coursera - Week 1 - Max Pooling
+    </figcaption>
+</figure>
+
+We need pooling here since it introduces character position invariance, meaning even if the character n-gram slides one to right or left the activation in the pooling output will most likely stay the same.
+
+We simply repeat this process of 1D convolution + max pooling.
+
+<figure>
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-29.png">
+    <figcaption>NLP Coursera - Week 1 - Max Pooling
+    </figcaption>
+</figure>
+
+The length of our feature representation decreases. We can do the pooling 6 times and our final architecture looks like this.
+
+<figure>
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-30.png">
+    <figcaption>NLP Coursera - Week 1 - Final Architecture on character neural networks
+    </figcaption>
+</figure>
+
+Below are the results of the experiments using the classical models and deep models (LSTM, Models with the above appoach)
+
+We can observe that if the dataset is small classical models perform much better, whereas on big data deep models outperform the classical ones.
+
+
+
+More details on the experiments can be access in this [paper](https://arxiv.org/pdf/1509.01626.pdf){:target="_blank"}
