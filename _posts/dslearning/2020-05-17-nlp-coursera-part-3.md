@@ -136,6 +136,10 @@ Below are the results of the experiments using the classical models and deep mod
 
 We can observe that if the dataset is small classical models perform much better, whereas on big data deep models outperform the classical ones.
 
-
+<figure>
+    <img src="https://raw.githubusercontent.com/KamranMK/kamranmk.github.io/master/images/coursera-nlp/coursera-nlp-w1-31.png">
+    <figcaption>NLP Coursera - Week 1 - Final Architecture on character neural networks
+    </figcaption>
+</figure>
 
 More details on the experiments can be access in this [paper](https://arxiv.org/pdf/1509.01626.pdf){:target="_blank"}
